@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { RegisterComponent } from './shared-components/register/register.component';
+import { RegisterComponent } from './shared-components/user/register/register.component';
+import { UserComponent } from './shared-components/user/user.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
-  exports: [RouterModule]
+
 })
 export class AppRoutingModule { }
 
