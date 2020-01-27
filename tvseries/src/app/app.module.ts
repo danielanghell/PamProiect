@@ -6,7 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +15,11 @@ import { AppComponent } from './app.component';
 import { SharedComponentsModule } from './shared-components/shared-components.module';
 
 import { appRoutes } from './routes';
+import { UserService } from './shared/user.service';
 
+//others
+import { AuthGuard } from '../app/auth/auth.guard';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 
 
@@ -33,10 +37,16 @@ import { appRoutes } from './routes';
     ReactiveFormsModule,
     FormsModule],
 
-  providers: [
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },
+    UserService,
+    AuthGuard,
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
 
   bootstrap: [AppComponent]

@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
   selector: 'register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  providers: [UserService]
+  providers: []
 })
 export class RegisterComponent implements OnInit {
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
